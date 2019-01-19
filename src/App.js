@@ -1,26 +1,38 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from './pages/Home'
+import Typography from 'typography'
+import judahTheme from 'typography-theme-judah'
+import githubTheme from 'typography-theme-github'
+import kirkhamTheme from 'typography-theme-kirkham'
+import { Segment, Grid, Divider, Button } from 'semantic-ui-react';
+import Navbar from './components/UI/Navbar'
+
+githubTheme.baseFontSize = '16px';
+const typography = new Typography(githubTheme);
+
+// const typography = new Typography();
+
+// Output CSS as string.
+typography.toString()
+
+// Or insert styles directly into the <head> (works well for client-only
+// JS web apps.
+typography.injectStyles()
+
+
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div>
+          <Navbar />
+          <Route path="/" exact component={Home} />
+        </div>
+      </Router>
     );
   }
 }
