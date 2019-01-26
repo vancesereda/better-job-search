@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import SearchBars from './UI/SearchBars'
 import Results from './UI/Results'
 import axios from 'axios'
-import _ from 'underscore'
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-
 
 //Some examples of results from Indeed's dropdown. Autocomplete to come eventually.
 const jobResults = [
@@ -70,7 +67,7 @@ class SearchResults extends Component {
                                             jobs.push(res.data);
                                             return res.data;
                                      })
-        this.setState({ jobs }, console.log(jobs))
+        this.setState({ jobs }, ()=> console.log(jobs))
 
     }
 

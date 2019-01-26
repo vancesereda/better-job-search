@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { Segment,
-         Card,
-
+         Item,
+         Grid,
 
                 } from "semantic-ui-react";
+
+import Parser from 'html-react-parser';
+
+
+
 
 class Results extends Component {
   constructor(props) {
@@ -12,35 +17,51 @@ class Results extends Component {
 
   render() {
     return (
-      <Segment style={{ width: "80%" }}>
-        <Card.Group>
-        {this.props.jobs ? this.props.jobs[0].results.map((v, i) => {
-            console.log(v);
-            return (
-            <Card key={i}>
-                <Card.Content>
-                    <Card.Header>
-                    {v.jobtitle}
-                    </Card.Header>
-                    <Card.Meta>
-                    {v.company}, {v.formattedRelativeTime}
-                    </Card.Meta>
-                    <Card.Description>
-                    {v.snippet}
-                    </Card.Description>
-                </Card.Content>  
-            </Card>
-            );
-        })
-        : null}
-    </Card.Group>
+      <Grid centered>
+        <Grid.Column mobile={16} tablet={16} computer={13}>
+          <Segment>
+            <Grid divided>
+              <Grid.Column width={4}>
+            <Item.Group divided>
+            {this.props.jobs ? this.props.jobs[0].results.map((v, i) => {
+                console.log(v);
+                return (
+                
+                <Item key={i} style={{fontSize:'0.8rem'}}>
+                    <Item.Content>
+                        <Item.Header>
+                        {v.jobtitle}
+                        </Item.Header>
+                        <Item.Meta>
+                        {v.company}, {v.formattedRelativeTime}
+                        </Item.Meta>
+                        <Item.Description>
+
+                        </Item.Description>
+                    </Item.Content>  
+                   
+                </Item>
+                );
+            })
+            : null}
+          </Item.Group>
+          </Grid.Column>
+          <Grid.Column width={12} verticalAlign='top'>
+          
+          <Item><Item.Header></Item.Header></Item>
+          
+          
+          </Grid.Column>
+          </Grid>
       </Segment>
+      </Grid.Column>
+    </Grid>
     );
   }
 }
 
 
-// const JobCardSummary = (props) => (
+// const JobItemSummary = (props) => (
     
 // )
 
